@@ -25,7 +25,3 @@ Chrome’s `debugger` permission can inspect and control tabs. This implementati
 Run `node --test test/skip.test.cjs` with Node.js. The test feeds two successive skip buttons to the content script and checks that the service worker sends one click for each in the same simulated document.
 
 Individual pre-roll and post-roll skips were verified on YouTube. Two successive skips passed in simulation. A playback with two live skippable ads is still unverified.
-
-## Cài nhanh bằng tiếng Việt
-
-Tải ZIP và giải nén. Mở `chrome://extensions`, bật **Developer mode**, chọn **Load unpacked**, rồi chọn thư mục chứa `manifest.json`. Tải lại tab YouTube. Khi nút **Bỏ qua** hiện ra, extension sẽ tự bấm.
