@@ -47,26 +47,3 @@ async function clickSkip(tabId, documentId) {
     }
   }
 }
-
-const adDeliveryRuleIds = new Set([1, 3, 4]);
-
-// Chrome exposes rule matches for unpacked extensions.
-chrome.declarativeNetRequest?.onRuleMatchedDebug?.addListener(({ rule, request }) => {
-  if (rule.rulesetId !== 'youtube_ads' || !adDeliveryRuleIds.has(rule.ruleId)) return;
-
-  void notifyBlockedRequest(request.tabId)
-    .catch(error => console.warn('Could not show an ad block notification:', error));
-});
-
-async function notifyBlockedRequest(tabId) {
-  const { blockNotifications } = await chrome.storage.local.get({ blockNotifications: true });
-  if (!blockNotifications) return;
-
-  // Reuse one notification per tab so a burst of requests does not create a stack.
-  await chrome.notifications.create(`youtube-ad-request-${tabId}`, {
-    type: 'basic',
-    iconUrl: 'icons/youtube-128.png',
-    title: 'YouTube ad request blocked',
-    message: 'A blocking rule stopped an ad-related request. A video ad may still play.',
-  });
-}
