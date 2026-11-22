@@ -24,4 +24,10 @@ Chrome’s `debugger` permission can inspect and control tabs. This implementati
 
 Run `node --test test/skip.test.cjs` with Node.js. The test feeds two successive skip buttons to the content script and checks that the service worker sends one click for each in the same simulated document.
 
-Individual pre-roll and post-roll skips were verified on YouTube. Two successive skips passed in simulation. A playback with two live skippable ads is still unverified.
+### Live YouTube testing
+
+- **Back-to-back ads:** The extension clicked **Skip ad** on the first ad when the button appeared after five seconds. YouTube immediately played a second ad, and the extension clicked **Skip ad** again as soon as the second button appeared.
+- **Ads during playback:** The extension also skipped ads that appeared while the video was playing. The video resumed without a manual click.
+- **Ads at the start or end:** Automatic skips were also verified before and after videos.
+
+The extension keeps checking for **Skip ad** throughout playback, including after it has already skipped an ad.
