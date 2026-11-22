@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "YouTube Auto Skip",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Clicks the Skip button when it becomes available on a YouTube video ad.",
   "content_scripts": [
     {
