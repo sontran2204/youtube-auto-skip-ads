@@ -17,11 +17,11 @@ Whenever an ad appears on a YouTube video, this Chrome extension waits for the *
 
 | Switch | What it does | Default |
 | --- | --- | --- |
-| **Auto Skip** | Clicks the **Skip ad** button when it appears. | On |
+| **Auto Skip** | Clicks the **Skip ad** button as soon as YouTube makes it available. | On |
 | **Ad Blocking** | Blocks requests to known ad endpoints on YouTube. Some video ads may still play. | Off |
 | **Block Notifications** | Shows a Chrome alert when the extension blocks an ad request. | On |
 
-Use the switches independently. To receive block alerts, turn on both **Ad Blocking** and **Block Notifications** and allow Chrome notifications in your system settings. Alerts are available in the unpacked build and report blocked requests. A video ad can still play through a different request.
+Use the switches independently. If an ad still plays with **Ad Blocking** on, **Auto Skip** can click **Skip ad** as soon as the button is available. If an ad has no skip button, it may play through. To receive block alerts, turn on both **Ad Blocking** and **Block Notifications** and allow Chrome notifications in your system settings. Alerts are available in the unpacked build and report blocked requests. A video ad can still play through a different request.
 
 ## How it works
 
@@ -39,3 +39,8 @@ Run `node --test test/skip.test.cjs` with Node.js. The test feeds two successive
 The extension automatically clicks **Skip ad** whenever the button appears, whether the ad plays before, during, or after a video.
 
 In a live Auto Skip test reported by the project owner, YouTube played two ads back to back. The extension clicked **Skip ad** on the first ad after five seconds, then clicked it again when the button appeared on the second ad. The same thing happened when ads appeared later while the video was playing. Whenever the **Skip ad** button appeared, the extension clicked it for you.
+
+
+### Experimental ad filtering (1.9.1)
+
+The local 1.9.1 test build also filters recognized ad data from YouTube player responses. Its **Ad data filtered** message confirms that the filter removed ad data. In the live comparison, the main video started without a visible pre-roll with Ad Blocking both on and off, so pre-roll prevention remains unverified.
