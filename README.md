@@ -6,12 +6,16 @@ A Chrome extension that automatically clicks **Skip ad** whenever the button app
 
 ## Install in Chrome
 
-1. On GitHub, select **Code → Download ZIP**, then unzip the download.
-2. Open `chrome://extensions` and enable **Developer mode**.
-3. Select **Load unpacked** and choose the extracted folder containing `manifest.json`.
-4. Refresh any YouTube tabs that were already open.
+1. On this GitHub page, click **Code**, then **Download ZIP**.
+2. Open the ZIP file to get the extension folder.
+3. Open Chrome, type `chrome://extensions` in the address bar, and press **Enter**.
+4. Turn on **Developer mode** at the top right.
+5. Click **Load unpacked**. Choose the folder you got in step 2. It should contain a file called `manifest.json`.
+6. If YouTube is already open, refresh that tab.
 
-[Chrome’s guide to loading unpacked extensions](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked)
+## Use it
+
+Play a video on YouTube. When the **Skip ad** button appears, the extension clicks it for you.
 
 ## How it works
 
