@@ -2,6 +2,8 @@
 
 A Chrome extension that automatically clicks **Skip ad** whenever the button appears while you’re watching a YouTube video. Ads without a skip button play normally.
 
+**Example:** If an ad is 10 seconds long and the **Skip ad** button appears after 5 seconds, the extension clicks it for you as soon as it’s available. You can get back to your video without clicking the button yourself.
+
 ## Install in Chrome
 
 1. On GitHub, select **Code → Download ZIP**, then unzip the download.
