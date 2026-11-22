@@ -1,4 +1,4 @@
-# YouTube Auto Skip
+# YouTube Auto Skip Ads
 
 A Chrome extension that clicks YouTube’s **Skip ad** button when it becomes available. Ads without a skip button play normally.
 
