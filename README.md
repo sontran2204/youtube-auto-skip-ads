@@ -15,17 +15,21 @@ Whenever an ad appears on a YouTube video, this Chrome extension waits for the *
 
 ## Toolbar controls
 
+Open the **Extensions** menu in Chrome and select **YouTube Auto Skip** to open the controls. You can pin the extension for quick access.
+
 | Switch | What it does | Default |
 | --- | --- | --- |
 | **Auto Skip** | Clicks the **Skip ad** button as soon as YouTube makes it available. | On |
 | **Ad Blocking** | Blocks requests to known ad endpoints on YouTube. Some video ads may still play. | Off |
 
-Use the switches independently. If an ad still plays with **Ad Blocking** on, **Auto Skip** can click **Skip ad** as soon as the button is available. If an ad has no skip button, it may play through. A video ad can still play through a different request.
+Use the switches independently. If an ad still plays with **Ad Blocking** on, **Auto Skip** can click **Skip ad** as soon as the button is available. If an ad has no skip button, it may play through.
 
 ## How it works
 
 - `skip.js` observes YouTube’s player for changes and periodically checks for a visible, enabled skip button. It first recognizes YouTube’s skip controls by their HTML identifiers and classes, which do not depend on the interface language. English and Vietnamese labels are fallback checks. A player layout that uses different identifiers and classes may require an update.
 - `input.js` rechecks the button’s position in the originating document and sends a mouse press and release through Chrome’s debugger API. It detaches afterward.
+
+- **Ad Blocking** enables the network rules in `rules.json`. Chrome blocks requests that match those rules when they come from YouTube. Ads delivered through other requests may still appear.
 
 Chrome’s `debugger` permission can inspect and control tabs. This implementation accepts requests from its own YouTube content script and uses the permission to send the skip click.
 
