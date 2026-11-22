@@ -1,0 +1,15 @@
+:root { color-scheme: light dark; font: 14px system-ui, sans-serif; }
+body { width: 298px; margin: 0; background: Canvas; color: CanvasText; }
+header { display: flex; align-items: center; gap: 10px; padding: 16px; border-bottom: 1px solid GrayText; }
+h1 { margin: 0; font-size: 17px; }
+main { padding: 4px 16px; }
+.setting { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; cursor: pointer; }
+.setting small { display: block; margin-top: 3px; color: GrayText; }
+input { appearance: none; flex: 0 0 40px; height: 23px; margin: 0; border: 1px solid GrayText; border-radius: 20px; background: GrayText; cursor: pointer; }
+input::before { content: ""; display: block; width: 17px; height: 17px; margin: 2px; border-radius: 50%; background: white; }
+input:checked { background: #167643; border-color: #167643; }
+input:checked::before { transform: translateX(17px); }
+input:focus-visible { outline: 2px solid Highlight; outline-offset: 3px; }
+input:disabled { opacity: .55; cursor: default; }
+#status:empty { display: none; }
+#status { margin: 0 0 12px; font-size: 12px; }

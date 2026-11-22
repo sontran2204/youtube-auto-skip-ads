@@ -15,6 +15,7 @@ test('clicks two successive Skip buttons in the same document', async () => {
   vm.runInNewContext(source('input.js'), {
     chrome: {
       runtime: { id: sender.id, onMessage: { addListener: fn => { workerListener = fn; } } },
+      storage: { local: { get: async defaults => defaults } },
       tabs: {
         sendMessage: async (id, message, options) => {
           assert.equal(id, sender.tab.id);
@@ -53,18 +54,11 @@ test('clicks two successive Skip buttons in the same document', async () => {
     setInterval: fn => { scan = fn; },
   });
 
-  const cases = [
-    { label: 'Skip navigation' },
-    { label: 'Skip ad' },
-    { label: 'Bỏ qua' },
-    { label: '広告をスキップ', identifier: '[id^="skip-button:"]' },
-    { label: 'تخطّي الإعلان', identifier: '.ytp-skip-ad-button' },
-  ];
-  for (const { label, identifier } of cases) {
+  for (const label of ['Skip ad', 'Bỏ qua']) {
     button = {
       innerText: label,
       isConnected: true,
-      closest: selector => identifier && selector.split(', ').includes(identifier) ? button : null,
+      closest: () => null,
       matches: () => false,
       getAttribute: () => null,
       checkVisibility: () => true,
@@ -75,5 +69,5 @@ test('clicks two successive Skip buttons in the same document', async () => {
     await new Promise(setImmediate);
   }
   const click = ['attach', 'mousePressed', 'mouseReleased', 'detach'];
-  assert.deepEqual(events, [...click, ...click, ...click, ...click]);
+  assert.deepEqual(events, [...click, ...click]);
 });

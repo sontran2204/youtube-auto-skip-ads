@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "YouTube Auto Skip",
-  "version": "1.5.0",
-  "description": "Clicks the Skip button when it becomes available on a YouTube video ad.",
+  "version": "1.8.2",
+  "description": "Skip YouTube ads automatically or block known ad requests.",
   "content_scripts": [
     {
       "matches": [
@@ -14,7 +14,11 @@
     }
   ],
   "permissions": [
-    "debugger"
+    "debugger",
+    "storage",
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback",
+    "notifications"
   ],
   "background": {
     "service_worker": "input.js"
@@ -32,6 +36,16 @@
       "48": "icons/youtube-48.png",
       "128": "icons/youtube-128.png"
     },
-    "default_title": "YouTube Auto Skip"
+    "default_title": "YouTube Auto Skip",
+    "default_popup": "popup.html"
+  },
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "youtube_ads",
+        "enabled": false,
+        "path": "rules.json"
+      }
+    ]
   }
 }
