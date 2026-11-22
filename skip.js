@@ -1,6 +1,7 @@
 (() => {
   const playerSelector = '#movie_player, .html5-video-player, #ytd-player, ytd-player';
   const skipControl = [
+    '[id^="skip-button:"]',
     '.ytp-skip-ad-button',
     '.ytp-ad-skip-button',
     '.ytp-ad-skip-button-modern',

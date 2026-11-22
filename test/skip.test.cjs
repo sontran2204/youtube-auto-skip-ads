@@ -53,11 +53,18 @@ test('clicks two successive Skip buttons in the same document', async () => {
     setInterval: fn => { scan = fn; },
   });
 
-  for (const label of ['Skip ad', 'Bỏ qua']) {
+  const cases = [
+    { label: 'Skip navigation' },
+    { label: 'Skip ad' },
+    { label: 'Bỏ qua' },
+    { label: '広告をスキップ', identifier: '[id^="skip-button:"]' },
+    { label: 'تخطّي الإعلان', identifier: '.ytp-skip-ad-button' },
+  ];
+  for (const { label, identifier } of cases) {
     button = {
       innerText: label,
       isConnected: true,
-      closest: () => null,
+      closest: selector => identifier && selector.split(', ').includes(identifier) ? button : null,
       matches: () => false,
       getAttribute: () => null,
       checkVisibility: () => true,
@@ -68,5 +75,5 @@ test('clicks two successive Skip buttons in the same document', async () => {
     await new Promise(setImmediate);
   }
   const click = ['attach', 'mousePressed', 'mouseReleased', 'detach'];
-  assert.deepEqual(events, [...click, ...click]);
+  assert.deepEqual(events, [...click, ...click, ...click, ...click]);
 });

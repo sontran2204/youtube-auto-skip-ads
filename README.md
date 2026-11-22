@@ -15,7 +15,7 @@ A Chrome extension that automatically clicks **Skip ad** whenever the button app
 
 ## How it works
 
-- `skip.js` observes YouTube’s player for changes and periodically checks for a visible, enabled skip button. It recognizes English and Vietnamese labels and common YouTube button classes.
+- `skip.js` observes YouTube’s player for changes and periodically checks for a visible, enabled skip button. It first recognizes YouTube’s skip controls by their HTML identifiers and classes, which do not depend on the interface language. English and Vietnamese labels are fallback checks. A player layout that uses different identifiers and classes may require an update.
 - `input.js` rechecks the button’s position in the originating document and sends a mouse press and release through Chrome’s debugger API. It detaches afterward.
 
 Chrome’s `debugger` permission can inspect and control tabs. This implementation accepts requests from its own YouTube content script and uses the permission to send the skip click.
