@@ -26,8 +26,6 @@ Run `node --test test/skip.test.cjs` with Node.js. The test feeds two successive
 
 ### Live YouTube testing
 
-- **Back-to-back ads:** The extension clicked **Skip ad** on the first ad when the button appeared after five seconds. YouTube immediately played a second ad, and the extension clicked **Skip ad** again as soon as the second button appeared.
-- **Ads during playback:** The extension also skipped ads that appeared while the video was playing. The video resumed without a manual click.
-- **Ads at the start or end:** Automatic skips were also verified before and after videos.
+The extension automatically clicks **Skip ad** whenever the button appears, whether the ad plays before, during, or after a video.
 
-The extension keeps checking for **Skip ad** throughout playback, including after it has already skipped an ad.
+In one live test, YouTube played two ads back to back. The extension clicked **Skip ad** on the first ad after five seconds, then clicked it again when the button appeared on the second ad. No manual click was needed.
